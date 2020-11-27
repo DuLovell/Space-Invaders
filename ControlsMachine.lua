@@ -15,7 +15,7 @@ function ControlsMachine:init(controls)
 
 end
 
-function ControlsMachine:handle(classObject)
+function ControlsMachine:userControls(classObject)
     self.current = classObject
     
     -- conditions
@@ -30,5 +30,16 @@ function ControlsMachine:handle(classObject)
     -- подумать над переключением режима стрельбы на кнопку
     elseif love.keyboard.wasPressed(self.controls['shoot']) then
         self.current:shoot()
+    end
+end
+
+function ControlsMachine:mainMenu(classObject)
+    self.current = classObject
+
+    -- conditions
+    if love.keyboard.wasPressed(self.controls['up']) then
+        self.current:moveUp()
+    elseif love.keyboard.wasPressed(self.controls['down']) then
+        self.current:moveDown()
     end
 end

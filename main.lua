@@ -7,6 +7,7 @@ require 'BaseObject'
 
 require 'states/BaseState'
 require 'states/PlayState'
+require 'states/TitleScreenState'
 
 require 'Ship'
 
@@ -37,11 +38,12 @@ function love.load()
     love.window.setTitle('Space Invaders')
 
     -- setup fonts
-    titleFont = love.graphics.newFont('arcade_classic.ttf', 100)
+    
 
     -- setup StateMachine
     gStateMachine = StateMachine{
-        ['play'] = function() return PlayState() end
+        ['play'] = function() return PlayState() end,
+        ['title'] = function() return TitleScreenState() end,
     }
 
     -- setup ControlsMachine (initialize control settings)
@@ -52,11 +54,11 @@ function love.load()
         ['right'] = 'd',
         ['shoot'] = 'space'
     }
-    gStateMachine:change('play')
+    gStateMachine:change('title')
     -- setup Keys Pressed table
     love.keyboard.keysPressed = {}
 
-    -- setup mouse input table
+    -- TODO: setup mouse input table
     
 
 end
@@ -76,12 +78,11 @@ end
 
 function love.update(dt)
     if  scrolling then
-        --love.mouse.setVisible(false) -- делает курсор невидимым
         backgroundScroll = (backgroundScroll + BACKGROUND_SCROLL_SPEED * dt) % BACKGROUND_LOOPING_POINT       
         gStateMachine:update(dt)
         
     end
-
+    love.keyboard.keysPressed = {}
 end  
 
 function love.draw()

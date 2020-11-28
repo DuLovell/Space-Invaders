@@ -8,8 +8,11 @@ require 'BaseObject'
 require 'states/BaseState'
 require 'states/PlayState'
 require 'states/TitleScreenState'
+require 'states/PauseState'
 
 require 'Ship'
+require 'Button'
+require 'Menu'
 
 WINDOW_WIDTH = 405
 WINDOW_HEIGHT = 720
@@ -44,6 +47,7 @@ function love.load()
     gStateMachine = StateMachine{
         ['play'] = function() return PlayState() end,
         ['title'] = function() return TitleScreenState() end,
+        ['pause'] = function() return PauseState() end
     }
 
     -- setup ControlsMachine (initialize control settings)
@@ -52,7 +56,9 @@ function love.load()
         ['down'] = 's',
         ['left'] = 'a',
         ['right'] = 'd',
-        ['shoot'] = 'space'
+        ['shoot'] = 'space',
+        ['select'] = 'return',
+        ['pause'] = 'escape'
     }
     gStateMachine:change('title')
     -- setup Keys Pressed table

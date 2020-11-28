@@ -10,12 +10,12 @@ function ControlsMachine:init(controls)
     }
     self.controls = controls or {}
     self.current = self.empty]]
-    self.controls = controls or {}
+    self.controls = controls
     self.current = {}
 
 end
 
-function ControlsMachine:userControls(classObject)
+function ControlsMachine:shipUpdate(classObject)
     self.current = classObject
     
     -- conditions
@@ -30,10 +30,11 @@ function ControlsMachine:userControls(classObject)
     -- подумать над переключением режима стрельбы на кнопку
     elseif love.keyboard.wasPressed(self.controls['shoot']) then
         self.current:shoot()
+
     end
 end
 
-function ControlsMachine:mainMenu(classObject)
+function ControlsMachine:menuControls(classObject)
     self.current = classObject
 
     -- conditions
@@ -41,5 +42,15 @@ function ControlsMachine:mainMenu(classObject)
         self.current:moveUp()
     elseif love.keyboard.wasPressed(self.controls['down']) then
         self.current:moveDown()
+    elseif love.keyboard.wasPressed(self.controls['select']) then
+        self.current:select()
+    end
+end
+
+function ControlsMachine:playStateControls(classObject)
+    self.current = classObject
+
+    if love.keyboard.wasPressed(self.controls['pause']) then
+        self.current:pause()
     end
 end

@@ -14,7 +14,7 @@ function Ship:init()
 end
 
 function Ship:update(dt)
-    gControlsMachine:userControls(self)   -- input handler
+    gControlsMachine:shipUpdate(self)   -- input handler
 end
 
 function Ship:render()
@@ -30,3 +30,4 @@ function Ship:moveDown() self.y = math.min(VIRTUAL_HEIGHT - self.height, self.y 
 function Ship:moveLeft() self.x = math.max(0, self.x - self.dx) end
 
 function Ship:moveRight() self.x = math.min(VIRTUAL_WIDTH - self.width, self.x + self.dx) end
+

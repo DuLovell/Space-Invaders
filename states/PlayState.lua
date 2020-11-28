@@ -16,7 +16,7 @@ function PlayState:render()
 end
 
 function PlayState:pause()
-    gStateMachine:change('pause', {self})
+    gStateMachine:change('pause', self)
 end
 
 

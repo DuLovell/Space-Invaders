@@ -27,7 +27,9 @@ backgroundScroll = -796 + VIRTUAL_HEIGHT
 BACKGROUND_SCROLL_SPEED = 30
 BACKGROUND_LOOPING_POINT = -398
 
-scrolling = true;
+isNewGame = true
+
+scrolling = true
 
 function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')

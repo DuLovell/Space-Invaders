@@ -1,11 +1,7 @@
 Menu = Class{}
 
-function Menu:init()
-    self.buttons = {
-        Button('EXIT', 'exit', 180, false),
-        Button('CONTROLS', 'controls', 165, false),
-        Button('START', 'play', 150, true)
-    }
+function Menu:init(buttons)
+    self.buttons = buttons
 end
 
 function Menu:update(dt)

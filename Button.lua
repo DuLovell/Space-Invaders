@@ -1,10 +1,11 @@
 Button = Class{}
 
-function Button:init(text, stateName, y, isSelected)
+function Button:init(text, stateName, y, isSelected, stateObject)
     self.y = y
     self.text = text
     self.stateName = stateName
     self.isSelected = isSelected
+    self.stateObject = stateObject or {}
 end
 
 
@@ -12,7 +13,7 @@ function Button:push()
     if self.stateName == 'exit' then
         love.event.quit()
     end
-    gStateMachine:change(self.stateName, {})
+    gStateMachine:change(self.stateName, self.stateObject)
 end
 
 function Button:render()

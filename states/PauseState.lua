@@ -1,8 +1,11 @@
 PauseState = Class{__includes = BaseState}
 
 function PauseState:enter(stateObject)
-    self.playStateObject = stateObject
-    self.menu = Menu()
+    self.menu = Menu({
+        Button('EXIT', 'exit', 140, false),
+        Button('CONTROLS', 'controls', 125, false),
+        Button('RESUME', 'play', 110, true, stateObject)
+    })
 end
 
 function PauseState:update(dt)
@@ -13,6 +16,3 @@ function PauseState:render()
     self.menu:render()
 end
 
-function PauseState:exit()
-    gStateMachine:change('play', {self.playStateObject})
-end

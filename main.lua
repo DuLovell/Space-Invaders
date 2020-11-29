@@ -9,6 +9,8 @@ require 'states/BaseState'
 require 'states/PlayState'
 require 'states/TitleScreenState'
 require 'states/PauseState'
+require 'states/ControlsState'
+require 'states/ControlsChangeState'
 
 require 'Ship'
 require 'Button'
@@ -31,6 +33,16 @@ isNewGame = true
 
 scrolling = true
 
+CONTROLS = {
+    ['down'] = 's',
+    ['up'] = 'w',
+    ['pause'] = 'escape',
+    ['shoot'] = 'space',
+    ['right'] = 'd',
+    ['select'] = 'return',
+    ['left'] = 'a',
+}
+
 function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
     
@@ -43,25 +55,20 @@ function love.load()
     love.window.setTitle('Space Invaders')
 
     -- setup fonts
+   
     
 
     -- setup StateMachine
     gStateMachine = StateMachine{
         ['play'] = function() return PlayState() end,
         ['title'] = function() return TitleScreenState() end,
-        ['pause'] = function() return PauseState() end
+        ['pause'] = function() return PauseState() end,
+        ['controls'] = function() return ControlsState() end,
+        ['controlsChange'] = function() return ControlsChangeState() end
     }
 
     -- setup ControlsMachine (initialize control settings)
-    gControlsMachine = ControlsMachine {
-        ['up'] = 'w',
-        ['down'] = 's',
-        ['left'] = 'a',
-        ['right'] = 'd',
-        ['shoot'] = 'space',
-        ['select'] = 'return',
-        ['pause'] = 'escape'
-    }
+    gControlsMachine = ControlsMachine(CONTROLS)
     gStateMachine:change('title')
     -- setup Keys Pressed table
     love.keyboard.keysPressed = {}
@@ -71,6 +78,10 @@ function love.load()
 
 end
 
+function love.textinput(t)
+    text = t
+end
+
 function love.resize(w, h)
     push:resize(w, h)
 end
@@ -78,6 +89,8 @@ end
 function love.keypressed(key)
     -- add to our table of keys pressed this frame
     love.keyboard.keysPressed[key] = true
+
+    LAST_PRESSED_KEY = key
 end
 
 function love.keyboard.wasPressed(key)
@@ -91,6 +104,8 @@ function love.update(dt)
         
     end
     love.keyboard.keysPressed = {}
+
+    LAST_PRESSED_KEY = nil
 end  
 
 function love.draw()

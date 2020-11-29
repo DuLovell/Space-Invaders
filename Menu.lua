@@ -19,7 +19,7 @@ function Menu:moveUp()
     for i, button in ipairs(self.buttons) do
         if button.isSelected then
             self.buttons[i].isSelected = false
-            self.buttons[i ~= 3 and i + 1 or 1].isSelected = true
+            self.buttons[i ~= #self.buttons and i + 1 or 1].isSelected = true
             break
         end
     end
@@ -29,7 +29,7 @@ function Menu:moveDown()
     for i, button in ipairs(self.buttons) do
         if button.isSelected then
             self.buttons[i].isSelected = false
-            self.buttons[i ~= 1 and i - 1 or 3].isSelected = true
+            self.buttons[i ~= 1 and i - 1 or #self.buttons].isSelected = true
             break
         end
     end

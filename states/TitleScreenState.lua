@@ -16,7 +16,7 @@ function TitleScreenState:enter(params)
 end
 
 function TitleScreenState:update(dt)
-    self.menu:update()
+    self.menu:update(dt)
 end
 
 function TitleScreenState:render()

@@ -30,7 +30,6 @@ function ControlsMachine:shipUpdate(classObject)
     -- подумать над переключением режима стрельбы на кнопку
     elseif love.keyboard.wasPressed(self.controls['shoot']) then
         self.current:shoot()
-
     end
 end
 
@@ -52,5 +51,12 @@ function ControlsMachine:playStateControls(classObject)
 
     if love.keyboard.wasPressed(self.controls['pause']) then
         self.current:pause()
+    end
+end
+
+function ControlsMachine:controlChange(classObject)
+    self.current = classObject
+    if LAST_PRESSED_KEY then
+        self.current:changeControl(LAST_PRESSED_KEY)
     end
 end

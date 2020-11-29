@@ -15,8 +15,8 @@ function ControlsMachine:init(controls)
 
 end
 
-function ControlsMachine:shipUpdate(classObject)
-    self.current = classObject
+function ControlsMachine:shipUpdate(shipObject)
+    self.current = shipObject
     
     -- conditions
     if love.keyboard.isDown(self.controls['up']) then
@@ -33,8 +33,8 @@ function ControlsMachine:shipUpdate(classObject)
     end
 end
 
-function ControlsMachine:menuControls(classObject)
-    self.current = classObject
+function ControlsMachine:menuControls(menuObject)
+    self.current = menuObject
 
     -- conditions
     if love.keyboard.wasPressed(self.controls['up']) then
@@ -46,8 +46,8 @@ function ControlsMachine:menuControls(classObject)
     end
 end
 
-function ControlsMachine:playStateControls(classObject)
-    self.current = classObject
+function ControlsMachine:playStateControls()
+    self.current = gPlayObject
 
     if love.keyboard.wasPressed(self.controls['pause']) then
         self.current:pause()

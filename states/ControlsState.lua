@@ -1,6 +1,6 @@
 ControlsState = Class{__includes = BaseState}
 
-local counter = 15
+ counter = 15
 
 function ControlsState:init()
     self.buttons = {}
@@ -9,14 +9,19 @@ function ControlsState:init()
         table.insert(self.buttons, 1, Button(string.format("%s   %q", action, button), 'controlsChange', 90 + counter, false, action))
         counter = counter + 15
     end
-    table.insert(self.buttons, 1, Button('BACK', 'title', 90 + counter, true))
+   
+    if IS_GAME_STARTED then
+        table.insert(self.buttons, 1, Button('BACK', 'pause', 90 + counter, true))
+    else
+        table.insert(self.buttons, 1, Button('BACK', 'title', 90 + counter, true))
+    end
+    
     table.insert(self.buttons, 1, Button('EXIT', 'exit', 105 + counter, false))
 
     self.menu = Menu(self.buttons)
 end
 
 function ControlsState:enter(controlToChange)
-    self.actionToChange = controlToChange or nil
     
 end
 

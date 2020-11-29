@@ -1,10 +1,10 @@
 PauseState = Class{__includes = BaseState}
 
-function PauseState:enter(stateObject)
+function PauseState:enter()
     self.menu = Menu({
         Button('EXIT', 'exit', 140, false),
         Button('CONTROLS', 'controls', 125, false),
-        Button('RESUME', 'play', 110, true, stateObject)
+        Button('RESUME', 'play', 110, true, gPlayObject)
     })
 end
 

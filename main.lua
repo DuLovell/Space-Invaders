@@ -29,7 +29,7 @@ backgroundScroll = -796 + VIRTUAL_HEIGHT
 BACKGROUND_SCROLL_SPEED = 30
 BACKGROUND_LOOPING_POINT = -398
 
-isNewGame = true
+
 
 scrolling = true
 
@@ -45,6 +45,8 @@ CONTROLS = {
 
 function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
+
+    IS_GAME_STARTED = false
     
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT,{
         vsync = true,

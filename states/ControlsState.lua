@@ -6,7 +6,7 @@ function ControlsState:init()
     self.buttons = {}
     
     for action, button in pairs(CONTROLS) do
-        table.insert(self.buttons, 1, Button(string.format("%s   %q", action, button), 'controlsChange', 90 + counter, false, action))
+        table.insert(self.buttons, 1, Button(string.format("%s   %q", action, button), 'controlsChange', 60 + counter, false, action))
         counter = counter + 15
     end
    
@@ -16,7 +16,7 @@ function ControlsState:init()
         table.insert(self.buttons, 1, Button('BACK', 'title', 90 + counter, true))
     end
     
-    table.insert(self.buttons, 1, Button('EXIT', 'exit', 105 + counter, false))
+    --table.insert(self.buttons, 1, Button('EXIT', 'title', 105 + counter, false))
 
     self.menu = Menu(self.buttons)
 end

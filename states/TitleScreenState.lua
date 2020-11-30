@@ -12,7 +12,7 @@ end
 
 
 function TitleScreenState:enter(params)
-
+    IS_GAME_STARTED = false
 end
 
 function TitleScreenState:update(dt)

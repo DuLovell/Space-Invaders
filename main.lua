@@ -15,6 +15,8 @@ require 'states/ControlsChangeState'
 require 'Ship'
 require 'Button'
 require 'Menu'
+require 'Bullet'
+require 'Shooting'
 
 WINDOW_WIDTH = 405
 WINDOW_HEIGHT = 720

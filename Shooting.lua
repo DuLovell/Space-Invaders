@@ -1,16 +1,16 @@
 Shooting = Class{}
 
-function Shooting:init()
+function Shooting:init(type)
     self.timer = 0
     self.bullets = {}
-
+    self.type = type
 end
 
 function Shooting:update(dt, ship, enemies) -- enemies это таблица врагов из класса Enemies
     self.timer = self.timer + dt
     if self.timer > 0.3 then
         
-        table.insert(self.bullets, Bullet(ship.x + ship.width / 2, ship.y))
+        table.insert(self.bullets, Bullet(ship.x + ship.width / 2, ship.y, self.type))
         self.timer = 0
     end
 

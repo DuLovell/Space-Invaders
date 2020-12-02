@@ -9,8 +9,8 @@ end
 
 function PlayState:enter(stateObject)
     self.ship = stateObject.ship or Ship()
-    self.shootingShip = stateObject.shootingShip or Shooting()
-    self.enemies = stateObject.enemies or Enemies()
+    self.shootingShip = stateObject.shootingShip or Shooting('user')
+    self.enemies = stateObject.enemies or Enemies(self.ship)
 end
 
 
@@ -18,7 +18,7 @@ function PlayState:update(dt)
     self.ship:update(dt)
     self.shootingShip:update(dt, self.ship, self.enemies.enemies)
     gControlsMachine:playStateControls()
-    self.enemies:update(dt)
+    self.enemies:update(dt, self.ship)
 end
 
 

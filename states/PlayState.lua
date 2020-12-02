@@ -9,19 +9,22 @@ end
 
 function PlayState:enter(stateObject)
     self.ship = stateObject.ship or Ship()
-    self.shooting = stateObject.shooting or Shooting()
+    self.shootingShip = stateObject.shootingShip or Shooting()
+    self.enemies = stateObject.enemies or Enemies()
 end
 
 
 function PlayState:update(dt)
     self.ship:update(dt)
-    self.shooting:update(dt, self.ship)
+    self.shootingShip:update(dt, self.ship, self.enemies.enemies)
     gControlsMachine:playStateControls()
+    self.enemies:update(dt)
 end
 
 
 function PlayState:render()
-    self.shooting:render()
+    self.enemies:render()
+    self.shootingShip:render()
     self.ship:render()
 end
 

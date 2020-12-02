@@ -6,11 +6,11 @@ function Shooting:init()
 
 end
 
-function Shooting:update(dt, ship)
+function Shooting:update(dt, ship, enemies) -- enemies это таблица врагов из класса Enemies
     self.timer = self.timer + dt
     if self.timer > 0.3 then
         
-        table.insert(self.bullets, Bullet(ship.x + ship.width /2, ship.y))
+        table.insert(self.bullets, Bullet(ship.x + ship.width / 2, ship.y))
         self.timer = 0
     end
 
@@ -20,8 +20,12 @@ function Shooting:update(dt, ship)
         end
     end
 
-    for i, bullet in ipairs(self.bullets) do
-
+    for i, bullet in ipairs(self.bullets) do -- итерируясь по объектам Bullet итерируемся по объектам Enemy и проверяем для Bullet столкновение с каждым Enemy 
+        for k, enemy in pairs(enemies) do
+            if bullet:collides(enemy) then
+                enemy.health = enemy.health - bullet.damage
+            end
+        end
         bullet:update(dt)
     end
 end

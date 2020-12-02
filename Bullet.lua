@@ -5,6 +5,8 @@ function Bullet:init(x, y)
     self.height = self.image:getHeight()
     self.width = self.image:getWidth()
 
+    self.damage = 10
+
     self.x = x - self.width / 2
     self.y = y 
 
@@ -25,6 +27,17 @@ function Bullet:render()
     love.graphics.draw(self.image, self.x, self.y)
 end
 
-function Bullet:collides()
+function Bullet:collides(object) -------------TODO
+    if self.x + self.width >= object.x and self.x <= object.x + object.width then
+        if self.y <= object.y + object.height and self.y >= object.y then
+            self.remove = true
+            return true
+        end
+    end
+
+    return false
+end
+
+function Bullet:explode() -- попробовать реализовать анимацию через итерированние по картинкам и их отрисовка
 end
 

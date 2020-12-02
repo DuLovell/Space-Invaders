@@ -6,7 +6,7 @@ function ControlsState:init()
     self.buttons = {}
     
     for action, button in pairs(CONTROLS) do
-        table.insert(self.buttons, 1, Button(string.format("%s   %q", action, button), 'controlsChange', 60 + counter, false, action))
+        table.insert(self.buttons, 1, Button(string.format("%s  %s", action, button), 'controlsChange', 60 + counter, false, action))
         counter = counter + 15
     end
    

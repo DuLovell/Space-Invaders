@@ -17,6 +17,8 @@ require 'Button'
 require 'Menu'
 require 'Bullet'
 require 'Shooting'
+require 'Enemies'
+require 'Enemy'
 
 WINDOW_WIDTH = 405
 WINDOW_HEIGHT = 720
@@ -58,7 +60,7 @@ function love.load()
 
     love.window.setTitle('Space Invaders')
 
-    -- setup fonts
+    math.randomseed(os.time())
    
     
 

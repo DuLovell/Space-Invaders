@@ -12,23 +12,23 @@ function Enemies:update(dt)
     self.timer = self.timer + dt
 
     if self.timer > math.random(5) then
-        table.insert(self.enemies, Enemy(math.random(VIRTUAL_WIDTH - self.enemy.width), -self.enemy.height, self.ship)) --- изменить значения под индивидуальную высоту и ширину модели врага
+        table.insert(self.enemies, 1, Enemy(math.random(VIRTUAL_WIDTH - self.enemy.width), -self.enemy.height)) --- изменить значения под индивидуальную высоту и ширину модели врага
         self.timer = 0
     end
 
-    for k, enemy in pairs(self.enemies) do
+    for i, enemy in ipairs(self.enemies) do
         if enemy.remove then
-            table.remove(self.enemies, k)
+            table.remove(self.enemies, i)
         end
     end
 
-    for k, enemy in pairs(self.enemies) do
+    for i, enemy in ipairs(self.enemies) do
         enemy:update(dt)
     end
 end
 
 function Enemies:render()
-    for k, enemy in pairs(self.enemies) do
+    for i, enemy in ipairs(self.enemies) do
         enemy:render()
     end
 end

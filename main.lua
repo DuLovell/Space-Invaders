@@ -14,6 +14,7 @@ require 'states/ControlsChangeState'
 require 'states/GameOverState'
 
 require 'Ship'
+require 'Heart'
 require 'Button'
 require 'Menu'
 require 'Bullet'

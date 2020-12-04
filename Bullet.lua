@@ -5,7 +5,7 @@ function Bullet:init(x, y, type)
     self.height = self.image:getHeight()
     self.width = self.image:getWidth()
 
-    self.damage = 10
+    self.damage = 1
 
     self.x = x - self.width / 2
     self.y = y 

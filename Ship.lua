@@ -6,7 +6,7 @@ function Ship:init()
     self.width = self.image:getWidth()
     self.height = self.image:getHeight()
 
-    self.health = 30
+    self.health = 3
 
     self.x = VIRTUAL_WIDTH / 2 - self.width / 2
     self.y = VIRTUAL_HEIGHT - self.height

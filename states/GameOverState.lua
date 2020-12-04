@@ -2,9 +2,9 @@ GameOverState = Class{__includes = BaseState}
 
 function GameOverState:enter()
     self.menu = Menu({
-        Button('PLAY  AGAIN', 'play', 150, true),
+        Button('EXIT', 'exit', 180, false),
         Button('MAIN  MENU', 'title', 165, false),
-        Button('EXIT', 'exit', 180, false)
+        Button('PLAY  AGAIN', 'play', 150, true),
     })
 end
 

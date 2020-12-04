@@ -5,7 +5,7 @@ function Enemy:init(x, y)
     self.width = self.image:getWidth()
     self.height = self.image:getHeight()
 
-    self.health = 20
+    self.health = 2
 
     self.x = x
     self.y = y

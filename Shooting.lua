@@ -12,6 +12,8 @@ function Shooting:update(dt, ship, enemies) -- enemies это таблица в�
         
         table.insert(self.bullets, Bullet(ship.x + ship.width / 2, ship.y, self.type))
         self.timer = 0
+    elseif not ship then
+        self.timer = 0
     end
 
     for i, bullet in ipairs(self.bullets) do

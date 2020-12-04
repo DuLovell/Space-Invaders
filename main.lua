@@ -11,6 +11,7 @@ require 'states/TitleScreenState'
 require 'states/PauseState'
 require 'states/ControlsState'
 require 'states/ControlsChangeState'
+require 'states/GameOverState'
 
 require 'Ship'
 require 'Button'
@@ -60,6 +61,10 @@ function love.load()
 
     love.window.setTitle('Space Invaders')
 
+    -- fonts
+    titleFont = love.graphics.newFont('arcade_classic.ttf', 30, 'none')
+    menuFont = love.graphics.newFont('arcade_classic.ttf', 15, 'normal')
+
     math.randomseed(os.time())
    
     
@@ -70,7 +75,8 @@ function love.load()
         ['title'] = function() return TitleScreenState() end,
         ['pause'] = function() return PauseState() end,
         ['controls'] = function() return ControlsState() end,
-        ['controlsChange'] = function() return ControlsChangeState() end
+        ['controlsChange'] = function() return ControlsChangeState() end,
+        ['game over'] = function() return GameOverState() end
     }
 
     -- setup ControlsMachine (initialize control settings)

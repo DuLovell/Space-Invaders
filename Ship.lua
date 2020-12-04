@@ -6,6 +6,8 @@ function Ship:init()
     self.width = self.image:getWidth()
     self.height = self.image:getHeight()
 
+    self.health = 30
+
     self.x = VIRTUAL_WIDTH / 2 - self.width / 2
     self.y = VIRTUAL_HEIGHT - self.height
 
@@ -15,6 +17,10 @@ end
 
 function Ship:update(dt)
     gControlsMachine:shipUpdate(self)   -- input handler
+
+    if self.health <= 0 then
+        gStateMachine:change('game over')
+    end
 end
 
 function Ship:render()

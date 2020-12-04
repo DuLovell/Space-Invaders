@@ -1,8 +1,6 @@
 TitleScreenState = Class{__includes = BaseState}
 
 function TitleScreenState:init()
-    titleFont = love.graphics.newFont('arcade_classic.ttf', 30, 'none')
-    menuFont = love.graphics.newFont('arcade_classic.ttf', 15, 'normal')
     self.menu = Menu({
         Button('EXIT', 'exit', 180, false),
         Button('CONTROLS', 'controls', 165, false),

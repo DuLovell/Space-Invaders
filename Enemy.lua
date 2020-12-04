@@ -28,6 +28,7 @@ end
 
 -----------------------------
 function Enemy:explode()
+    
 end
 
 function Enemy:move(dt)

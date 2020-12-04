@@ -1,7 +1,9 @@
 Bullet = Class{}
 
 function Bullet:init(x, y, type)
-    self.image = love.graphics.newImage('bullet.png')
+    self.type = type
+    
+    self.image = self.type == 'user' and love.graphics.newImage('bullet.png') or love.graphics.newImage('bulletEnemyPink.png')
     self.height = self.image:getHeight()
     self.width = self.image:getWidth()
 
@@ -12,7 +14,7 @@ function Bullet:init(x, y, type)
 
     self.dy = 100
 
-    self.type = type
+
 
     self.remove = false
 end

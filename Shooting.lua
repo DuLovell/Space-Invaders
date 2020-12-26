@@ -39,7 +39,7 @@ function Shooting:update(dt, ship, enemies, suicideEnemies) -- enemies это т
                 suicideEnemy.health = suicideEnemy.health - bullet.damage
             end
         end
-        
+
         bullet:update(dt)
     end
 end

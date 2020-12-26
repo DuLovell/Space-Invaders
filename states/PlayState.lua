@@ -1,10 +1,12 @@
 PlayState = Class{__includes = {BaseState, BaseObject}}
 
+
+
 function PlayState:init()
+    SCORE = 0
     gPlayObject = self
     IS_GAME_STARTED = true
     self.heart = Heart() -- for width and height values of Heart objects
-
 end
 
     
@@ -53,6 +55,8 @@ function PlayState:render()
     for i, heart in ipairs(self.hearts) do
         heart:render()
     end
+
+    love.graphics.printf(SCORE, 5, 3, VIRTUAL_WIDTH, 'left')
 end
 
 function PlayState:pause()

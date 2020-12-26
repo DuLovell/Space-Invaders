@@ -16,5 +16,6 @@ function GameOverState:render()
     love.graphics.setFont(titleFont)
     love.graphics.printf('Game  over', 0, 60, VIRTUAL_WIDTH, 'center')
     love.graphics.setFont(menuFont)
+    love.graphics.printf(string.format('Score   %s', SCORE), 0, 90, VIRTUAL_WIDTH, 'center')
     self.menu:render()
 end

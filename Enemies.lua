@@ -31,6 +31,7 @@ function Enemies:update(dt)
     for i, enemy in ipairs(self.enemies) do
         if enemy.remove then
             table.remove(self.enemies, i)
+            SCORE = SCORE + 50
         end
     end
 
@@ -38,6 +39,7 @@ function Enemies:update(dt)
         if enemy:collides(self.ship) then
             self.ship.health = self.ship.health - 1
             enemy.remove = true
+
         end
         enemy:update(dt)
     end
@@ -47,12 +49,14 @@ function Enemies:update(dt)
         if suicideEnemy:collides(self.ship) then
             self.ship.health = self.ship.health - 1
             suicideEnemy.remove = true
+
         end
         suicideEnemy:update(dt)
     end
     for i, suicideEnemy in ipairs(self.suicideEnemies) do
         if suicideEnemy.remove then
             table.remove(self.suicideEnemies, i)
+            SCORE = SCORE + 25
         end
     end
 end

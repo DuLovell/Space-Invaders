@@ -90,7 +90,7 @@ function love.load()
     love.keyboard.keysPressed = {}
 
     -- TODO: setup mouse input table
-    
+    love.mouse.setVisible(false)
 
 end
 

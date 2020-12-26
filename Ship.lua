@@ -36,4 +36,3 @@ function Ship:moveDown() self.y = math.min(VIRTUAL_HEIGHT - self.height, self.y 
 function Ship:moveLeft() self.x = math.max(0, self.x - self.dx) end
 
 function Ship:moveRight() self.x = math.min(VIRTUAL_WIDTH - self.width, self.x + self.dx) end
-

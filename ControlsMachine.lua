@@ -19,7 +19,7 @@ function ControlsMachine:shipUpdate(shipObject)
     self.current = shipObject
     
     -- conditions
-    if love.keyboard.isDown(self.controls['up']) then
+    if love.keyboard.isDown(self.controls['up'])then
         self.current:moveUp()
     elseif love.keyboard.isDown(self.controls['down']) then
         self.current:moveDown()

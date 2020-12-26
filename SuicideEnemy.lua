@@ -1,7 +1,7 @@
 SuicideEnemy = Class{__includes = Enemy}
 
 function SuicideEnemy:init(x, y, ship)
-    self.image = love.graphics.newImage('basicEnemy.png')
+    self.image = love.graphics.newImage('suicideEnemy.png')
     self.width = self.image:getWidth()
     self.height = self.image:getHeight()
 
@@ -13,7 +13,7 @@ function SuicideEnemy:init(x, y, ship)
     self.remove = false
     self.ship = ship
 
-    self.dy = 50
+    self.dy = 30
 end
 
 

@@ -14,8 +14,14 @@ function Enemies:update(dt)
 
     if self.timer > math.random(5) then
         table.insert(self.enemies, 1, Enemy(math.random(VIRTUAL_WIDTH - self.enemy.width), -self.enemy.height))
-        suicideX = math.random(-50, -self.enemy.width)
-        suicideY = math.random(VIRTUAL_HEIGHT / 3, VIRTUAL_HEIGHT / 2)
+        
+        if math.random() + 0.5 >= 1 then
+            suicideX = math.random(-50, -self.enemy.width)
+        else
+            suicideX = math.random(VIRTUAL_WIDTH, VIRTUAL_WIDTH + 50)
+        end
+
+        suicideY = math.random(VIRTUAL_HEIGHT / 2)
         table.insert(self.suicideEnemies, 1, SuicideEnemy(suicideX, suicideY, self.ship)) --- изменить значения под индивидуальную высоту и ширину модели врага
         self.timer = 0
     end

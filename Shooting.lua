@@ -6,7 +6,9 @@ function Shooting:init(type)
     self.type = type
 end
 
-function Shooting:update(dt, ship, enemies) -- enemies это таблица врагов из класса Enemies
+function Shooting:update(dt, ship, enemies, suicideEnemies) -- enemies это таблица врагов из класса Enemies
+    local suicideEnemies = suicideEnemies or {} 
+
     self.timer = self.timer + dt
 
     if  self.timer > 0.3  and self.type == 'user' and ship then
@@ -31,6 +33,13 @@ function Shooting:update(dt, ship, enemies) -- enemies это таблица в�
                 enemy.health = enemy.health - bullet.damage
             end
         end
+
+        for k, suicideEnemy in pairs(suicideEnemies) do
+            if bullet:collides(suicideEnemy) then
+                suicideEnemy.health = suicideEnemy.health - bullet.damage
+            end
+        end
+        
         bullet:update(dt)
     end
 end

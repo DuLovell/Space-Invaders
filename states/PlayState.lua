@@ -7,6 +7,7 @@ function PlayState:init()
 
 end
 
+    
 function PlayState:enter(stateObject)
     self.ship = stateObject.ship or Ship()
     self.shootingShip = stateObject.shootingShip or Shooting('user')
@@ -25,7 +26,7 @@ end
 
 function PlayState:update(dt)
     self.ship:update(dt)
-    self.shootingShip:update(dt, self.ship, self.enemies.enemies)
+    self.shootingShip:update(dt, self.ship, self.enemies.enemies, self.enemies.suicideEnemies)
     gControlsMachine:playStateControls()
     self.enemies:update(dt, self.ship)
     self:manageHearts()
@@ -64,6 +65,8 @@ end
 
 function PlayState:manageHearts()
     for i = 3, self.ship.health + 1, -1 do
-        self.hearts[i].type = 'empty'
+        if i >= 0 then
+            self.hearts[i].type = 'empty'
+        end
     end
 end

@@ -1,6 +1,8 @@
 push = require 'push'
 
 Class = require 'class'
+
+
 require 'StateMachine'
 require 'ControlsMachine'
 require 'BaseObject'
@@ -21,6 +23,7 @@ require 'Bullet'
 require 'Shooting'
 require 'Enemies'
 require 'Enemy'
+require 'SuicideEnemy'
 
 WINDOW_WIDTH = 405
 WINDOW_HEIGHT = 720
@@ -68,7 +71,7 @@ function love.load()
 
     math.randomseed(os.time())
    
-    
+
 
     -- setup StateMachine
     gStateMachine = StateMachine{

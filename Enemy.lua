@@ -1,5 +1,6 @@
 Enemy = Class{}
 
+
 function Enemy:init(x, y)
     self.image = love.graphics.newImage('basicEnemy.png')
     self.width = self.image:getWidth()
@@ -11,13 +12,14 @@ function Enemy:init(x, y)
     self.y = y
 
     self.remove = false
-end
 
+end
+ 
 
 function Enemy:update(dt)
     self:move(dt)
 
-    if self.health <= 0 or self.x + self.width <= 0 or self.x >= VIRTUAL_WIDTH then
+    if self.health <= 0 or self.x + self.width <= -150 or self.x >= VIRTUAL_WIDTH + 150 then
         self.remove = true
     end
 end
@@ -26,10 +28,18 @@ function Enemy:render()
     love.graphics.draw(self.image, self.x, self.y)
 end
 
------------------------------
-function Enemy:explode()
-    
+function Enemy:collides(object)
+    if self.x + self.width >= object.x and self.x <= object.x + object.width then
+        if self.y <= object.y + object.height and self.y >= object.y then
+            self.remove = true
+            return true
+        end
+    end
+
+    return false
 end
+
+-----------------------------
 
 function Enemy:move(dt)
     if self.y - self.height <= VIRTUAL_HEIGHT / 2 then

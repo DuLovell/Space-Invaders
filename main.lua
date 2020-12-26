@@ -92,6 +92,13 @@ function love.load()
     -- TODO: setup mouse input table
     love.mouse.setVisible(false)
 
+    SOUNDS = {
+        ['shoot'] = love.audio.newSource('Laser_Shoot.wav', 'static'),
+        ['select'] = love.audio.newSource("Select.wav", 'static'),
+        ['pause'] = love.audio.newSource('Pause.wav', 'static'),
+        ['selfDamage'] = love.audio.newSource('Self_Damage.wav', 'static'),
+        ['enemyDamage'] = love.audio.newSource('Damage.wav', 'static')
+    }
 end
 
 function love.textinput(t)

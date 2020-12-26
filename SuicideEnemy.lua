@@ -5,7 +5,7 @@ function SuicideEnemy:init(x, y, ship)
     self.width = self.image:getWidth()
     self.height = self.image:getHeight()
 
-    self.health = 2
+    self.health = 1
 
     self.x = x
     self.y = y

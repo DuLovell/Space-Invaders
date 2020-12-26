@@ -35,6 +35,11 @@ function Bullet:collides(object)
     if self.x + self.width >= object.x and self.x <= object.x + object.width then
         if self.y <= object.y + object.height and self.y >= object.y then
             self.remove = true
+            if self.type == 'user' then
+                SOUNDS['enemyDamage']:play()
+            else
+                SOUNDS['selfDamage']:play()
+            end
             return true
         end
     end

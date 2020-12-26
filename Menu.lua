@@ -23,6 +23,7 @@ function Menu:moveUp()
             break
         end
     end
+    SOUNDS['select']:play()
 end
 
 function Menu:moveDown()
@@ -33,6 +34,7 @@ function Menu:moveDown()
             break
         end
     end
+    SOUNDS['select']:play()
 end
 
 function Menu:select()

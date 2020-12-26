@@ -20,7 +20,7 @@ function PlayState:enter(stateObject)
         table.insert(self.hearts, Heart(100 + self.heart.width * i, 7, 'full'))
     end
     
-    self.shootingEnemy = {}
+    self.shootingEnemy = stateObject.shootingEnemy or {}
     for i = 0, 10, 1 do
         table.insert(self.shootingEnemy, 1, Shooting('enemy'))
     end

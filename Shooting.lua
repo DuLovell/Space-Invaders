@@ -13,6 +13,7 @@ function Shooting:update(dt, ship, enemies, suicideEnemies) -- enemies это т
 
     if  self.timer > 0.3  and self.type == 'user' and ship then
         table.insert(self.bullets, Bullet(ship.x + ship.width / 2, ship.y, self.type))
+        SOUNDS['shoot']:play()
         self.timer = 0
     elseif  self.timer > 0.5 and self.type == 'enemy' and ship then
         table.insert(self.bullets, Bullet(ship.x + ship.width / 2, ship.y, self.type))

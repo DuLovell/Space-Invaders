@@ -38,6 +38,7 @@ function Enemies:update(dt)
     for i, enemy in ipairs(self.enemies) do
         if enemy:collides(self.ship) then
             self.ship.health = self.ship.health - 1
+            SOUNDS['selfDamage']:play()
             enemy.remove = true
 
         end
@@ -48,6 +49,7 @@ function Enemies:update(dt)
     for i, suicideEnemy in ipairs(self.suicideEnemies) do
         if suicideEnemy:collides(self.ship) then
             self.ship.health = self.ship.health - 1
+            SOUNDS['selfDamage']:play()
             suicideEnemy.remove = true
 
         end

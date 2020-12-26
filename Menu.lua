@@ -44,4 +44,5 @@ function Menu:select()
             break
         end
     end
+    SOUNDS['press']:play()
 end

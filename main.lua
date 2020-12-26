@@ -97,7 +97,8 @@ function love.load()
         ['select'] = love.audio.newSource("Select.wav", 'static'),
         ['pause'] = love.audio.newSource('Pause.wav', 'static'),
         ['selfDamage'] = love.audio.newSource('Self_Damage.wav', 'static'),
-        ['enemyDamage'] = love.audio.newSource('Damage.wav', 'static')
+        ['enemyDamage'] = love.audio.newSource('Damage.wav', 'static'),
+        ['press'] = love.audio.newSource('buttonPush.wav', 'static')
     }
 end
 
